@@ -51,7 +51,7 @@ def handle(msg):
         
         print ('Sending msg ...')
     	bot.sendMessage(chat_id, response[op])
-    if command == '/mito' or command == '/mito@vlademeeer_bot':
+	if command == '/mito' or command == '/mito@vlademeeer_bot':
         img = random.randint(0,len(pics));
         
         while img in filaMito:
