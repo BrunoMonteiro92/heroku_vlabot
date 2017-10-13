@@ -11,9 +11,6 @@ from collections import deque
 #LIVE BOT
 #TOKEN = "220404785:AAHPsh6G845YNKpeexlaF2_-0TC-z4WSwJg"
 
-#DEV BOT
-#TOKEN = "397302315:AAGmbVIAyVvAquar8qkA7M6cP1USCEiQO28"
-
 TOKEN = os.environ['TELEGRAM_TOKEN']
 
 def handle(msg):
@@ -28,13 +25,13 @@ def handle(msg):
     #LIVE
     pics = [f for f in os.listdir('/app/images/')]
     audios = [f for f in os.listdir('/app/sound/')]
-
-    #DEV
-    #pics = [f for f in os.listdir('/Users/yurireis/Documents/vladFlask/myflaskapp/images/')]
-    #audios = [f for f in os.listdir('/Users/yurireis/Documents/vladFlask/myflaskapp/sound/')]
+    print(repr(len(pics)))
+    print(repr(len(audios)))
 
     response = ["Risos", "Hausha7hausua7e","Calma","Nossa","Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua" , "Nao ma", "Bacana", "Essa fera", "Que loucura", "O loco bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora", "Meu nome é Vladimir Lima tenho 24 anos, faço cerveja, ando de bicicleta e só", "Complicado esse humor", "boa", "Esse tempo todo?", "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado"]
     responseAsk = ["Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!"]
+    print(repr(len(response)))
+    print(repr(len(responseAsk)))
 
     if command == '/help' or command == '/help@vlademeeer_bot':
         bot.sendMessage(chat_id, "Vlad Bot v3.2\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n/vlad - faço um comentário extremamente enriquecedor para a conversa\n/askvlad - respostas honestas para qualquer pergunta\n/mito - minhas fotos sensuais que levam até homens a loucura\n/calma - CALMA SENHORA\n/diz - minha voz inconfundível pra vc se deliciar\n\n\nDeveloped by: Yuri Reis / Bruno Monteiro (Só fez um IF.. HEAUDHSADSDSDCVVFLFLFFL te amo cara)")
