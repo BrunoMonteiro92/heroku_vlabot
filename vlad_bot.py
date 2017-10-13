@@ -33,19 +33,19 @@ def handle(msg):
         f = open('/app/calma.jpg', 'rb') 
         bot.sendPhoto(chat_id, f)
     if command == '/vlad' or command == '/vlad@vlademeeer_bot':
-        op = random.randint(0,len(response));
+        op = random.randint(0,len(response)-1);
 
         while op in filaVlad:
-            op = random.randint(0,len(response))
+            op = random.randint(0,len(response)-1)
         filaVlad.append(op)
 
         print ('Sending ' + response[op] + ' to chat: ' + repr(chat_id) + ' ...')
         bot.sendMessage(chat_id, response[op])
     if command == '/mito' or command == '/mito@vlademeeer_bot':
-        img = random.randint(0,len(pics));
+        img = random.randint(0,len(pics)-1);
 
         while img in filaMito:
-            img = random.randint(0,len(pics));
+            img = random.randint(0,len(pics)-1);
         filaMito.append(img)
 
         f = open('/app/images/%s' % pics[img], 'rb')
@@ -61,11 +61,11 @@ def handle(msg):
         print ('Sending ' + responseAsk[opAsk] + ' to chat: ' + repr(chat_id) + ' ...')
         bot.sendMessage(chat_id, responseAsk[opAsk])
     if command == '/diz' or command == '/diz@vlademeeer_bot':
-        aud = random.randint(0,len(audios))
+        aud = random.randint(0,len(audios)-1)
         print ('Audio gerado numero: ' + repr(aud))
 
         while aud in filaDiz:
-            aud = random.randint(0,len(audios))
+            aud = random.randint(0,len(audios)-1)
         filaDiz.append(aud)
 
         f = open('/app/sound/%s' % audios[aud], 'rb')  
