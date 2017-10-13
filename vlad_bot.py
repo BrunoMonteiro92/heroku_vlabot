@@ -62,6 +62,7 @@ def handle(msg):
         bot.sendMessage(chat_id, responseAsk[opAsk])
     if command == '/diz' or command == '/diz@vlademeeer_bot':
         aud = random.randint(0,len(audios))
+        print ('Audio gerado numero: ' + repr(aud))
 
         while aud in filaDiz:
             aud = random.randint(0,len(audios))
