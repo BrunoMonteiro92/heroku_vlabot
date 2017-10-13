@@ -26,8 +26,8 @@ def handle(msg):
     print ('Command received ... %s', command)
 
     #LIVE
-    pics = [f for f in os.listdir('/images/')]
-    audios = [f for f in os.listdir('/sound/')]
+    pics = [f for f in os.listdir('/app/images/')]
+    audios = [f for f in os.listdir('/app/sound/')]
 
     #DEV
     #pics = [f for f in os.listdir('/Users/yurireis/Documents/vladFlask/myflaskapp/images/')]
@@ -40,7 +40,7 @@ def handle(msg):
         bot.sendMessage(chat_id, "Vlad Bot v3.1\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n/vlad - faço um comentário extremamente enriquecedor para a conversa\n/askvlad - respostas honestas para qualquer pergunta\n/mito - minhas fotos sensuais que levam até homens a loucura\n/calma - CALMA SENHORA\n/diz - minha voz inconfundível pra vc se deliciar\n\n\nDeveloped by: Yuri Reis / Bruno Monteiro (Só fez um IF.. HEAUDHSADSDSDCVVFLFLFFL te amo cara)")
     if command == '/calma' or command == '/calma@vlademeeer_bot':
         print ('Sending calma ...')
-        f = open('calma.jpg', 'rb') 
+        f = open('/app/calma.jpg', 'rb') 
         bot.sendPhoto(chat_id, f)
     if command == '/vlad' or command == '/vlad@vlademeeer_bot':
         op = random.randint(0,len(response));
@@ -59,7 +59,7 @@ def handle(msg):
         filaMito.append(img)
 
         #LIVE
-        f = open('/images/%s' % pics[img], 'rb')
+        f = open('/app/images/%s' % pics[img], 'rb')
 
         #DEV
         #print ('Sending photo ... %s', pics[img])
@@ -82,7 +82,7 @@ def handle(msg):
         filaDiz.append(aud)
 
         #LIVE
-        f = open('sound/%s' % audios[aud], 'rb')  
+        f = open('/app/sound/%s' % audios[aud], 'rb')  
 
         #DEV
         #print ('Sending audio ... %s', audios[aud])
