@@ -28,10 +28,12 @@ def handle(msg):
 
     if command == '/help' or command == '/help@vlademeeer_bot':
         bot.sendMessage(chat_id, "Vlad Bot v3.2\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n/vlad - faço um comentário extremamente enriquecedor para a conversa\n/askvlad - respostas honestas para qualquer pergunta\n/mito - minhas fotos sensuais que levam até homens a loucura\n/calma - CALMA SENHORA\n/diz - minha voz inconfundível pra vc se deliciar\n\n\nDeveloped by: Yuri Reis / Bruno Monteiro (Só fez um IF.. HEAUDHSADSDSDCVVFLFLFFL te amo cara)")
+    
     if command == '/calma' or command == '/calma@vlademeeer_bot':
         print ('Sending calma to chat: ' + repr(chat_id) + ' ...')
         f = open('/app/calma.jpg', 'rb') 
         bot.sendPhoto(chat_id, f)
+
     if command == '/vlad' or command == '/vlad@vlademeeer_bot':
         op = random.randint(0,len(response)-1);
 
@@ -41,6 +43,7 @@ def handle(msg):
 
         print ('Sending ' + response[op] + ' to chat: ' + repr(chat_id) + ' ...')
         bot.sendMessage(chat_id, response[op])
+
     if command == '/mito' or command == '/mito@vlademeeer_bot':
         img = random.randint(0,len(pics)-1);
 
@@ -57,12 +60,12 @@ def handle(msg):
     if command == '/askvlad' or command == '/askvlad@vlademeeer_bot':
         bot.sendMessage(chat_id, "Algo de errado não está certo, cadê a pergunta?")
     elif '/askvlad' in command:
-        opAsk = random.randint(0,len(responseAsk));
+        opAsk = random.randint(0,len(responseAsk)-1);
         print ('Sending ' + responseAsk[opAsk] + ' to chat: ' + repr(chat_id) + ' ...')
         bot.sendMessage(chat_id, responseAsk[opAsk])
+
     if command == '/diz' or command == '/diz@vlademeeer_bot':
         aud = random.randint(0,len(audios)-1)
-        print ('Audio gerado numero: ' + repr(aud))
 
         while aud in filaDiz:
             aud = random.randint(0,len(audios)-1)
