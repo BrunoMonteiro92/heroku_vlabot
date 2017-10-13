@@ -37,9 +37,9 @@ def handle(msg):
     responseAsk = ["Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!"]
 
     if command == '/help' or command == '/help@vlademeeer_bot':
-        bot.sendMessage(chat_id, "Vlad Bot v3.1\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n/vlad - faço um comentário extremamente enriquecedor para a conversa\n/askvlad - respostas honestas para qualquer pergunta\n/mito - minhas fotos sensuais que levam até homens a loucura\n/calma - CALMA SENHORA\n/diz - minha voz inconfundível pra vc se deliciar\n\n\nDeveloped by: Yuri Reis / Bruno Monteiro (Só fez um IF.. HEAUDHSADSDSDCVVFLFLFFL te amo cara)")
+        bot.sendMessage(chat_id, "Vlad Bot v3.2\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n/vlad - faço um comentário extremamente enriquecedor para a conversa\n/askvlad - respostas honestas para qualquer pergunta\n/mito - minhas fotos sensuais que levam até homens a loucura\n/calma - CALMA SENHORA\n/diz - minha voz inconfundível pra vc se deliciar\n\n\nDeveloped by: Yuri Reis / Bruno Monteiro (Só fez um IF.. HEAUDHSADSDSDCVVFLFLFFL te amo cara)")
     if command == '/calma' or command == '/calma@vlademeeer_bot':
-        print ('Sending calma ...')
+        print ('Sending calma to chat: %s ...', chat_id)
         f = open('/app/calma.jpg', 'rb') 
         bot.sendPhoto(chat_id, f)
     if command == '/vlad' or command == '/vlad@vlademeeer_bot':
@@ -49,7 +49,7 @@ def handle(msg):
             op = random.randint(0,len(response))
         filaVlad.append(op)
 
-        print ('Sending msg ...')
+        print ('Sending _%s_ to chat: %s ...', response, chat_id)
         bot.sendMessage(chat_id, response[op])
     if command == '/mito' or command == '/mito@vlademeeer_bot':
         img = random.randint(0,len(pics));
@@ -58,12 +58,8 @@ def handle(msg):
             img = random.randint(0,len(pics));
         filaMito.append(img)
 
-        #LIVE
         f = open('/app/images/%s' % pics[img], 'rb')
-
-        #DEV
-        #print ('Sending photo ... %s', pics[img])
-        #f = open('/Users/yurireis/Documents/vladFlask/myflaskapp/images/%s' % pics[img], 'rb')
+        print ('Sending pic %s to chat: %s ...', pics[img], chat_id)
 
         bot.sendPhoto(chat_id, f)
         f.close()
@@ -72,7 +68,7 @@ def handle(msg):
         bot.sendMessage(chat_id, "Algo de errado não está certo, cadê a pergunta?")
     elif '/askvlad' in command:
         opAsk = random.randint(0,len(responseAsk));
-        print ('Sending answer ...')
+        print ('Sending _%s_ to chat: %s ...', responseAsk[opAsk], chat_id)
         bot.sendMessage(chat_id, responseAsk[opAsk])
     if command == '/diz' or command == '/diz@vlademeeer_bot':
         aud = random.randint(0,len(audios))
@@ -81,12 +77,8 @@ def handle(msg):
             aud = random.randint(0,len(audios))
         filaDiz.append(aud)
 
-        #LIVE
         f = open('/app/sound/%s' % audios[aud], 'rb')  
-
-        #DEV
-        #print ('Sending audio ... %s', audios[aud])
-        #f = open('/Users/yurireis/Documents/vladFlask/myflaskapp/sound/%s' % audios[aud], 'rb') 
+        print ('Sending audio %s to chat: %s ...', audios[aud], chat_id)
 
         bot.sendVoice(chat_id, f)
         f.close()
