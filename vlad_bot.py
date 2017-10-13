@@ -8,6 +8,14 @@ import random
 import os
 from collections import deque
 
+#LIVE BOT
+#TOKEN = "220404785:AAHPsh6G845YNKpeexlaF2_-0TC-z4WSwJg"
+
+#DEV BOT
+#TOKEN = "397302315:AAGmbVIAyVvAquar8qkA7M6cP1USCEiQO28"
+
+TOKEN = os.environ['TELEGRAM_TOKEN']
+
 def handle(msg):
     chat_id = msg['chat']['id']
     command = msg['text']
@@ -82,13 +90,6 @@ def handle(msg):
 
         bot.sendVoice(chat_id, f)
         f.close()
-
-
-#LIVE BOT
-TOKEN = "220404785:AAHPsh6G845YNKpeexlaF2_-0TC-z4WSwJg"
-
-#DEV BOT
-#TOKEN = "397302315:AAGmbVIAyVvAquar8qkA7M6cP1USCEiQO28"
 
 bot = telepot.Bot(TOKEN)
 bot.message_loop(handle)
