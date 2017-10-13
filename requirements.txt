@@ -1,1 +1,1 @@
-pip install git+https://github.com/nickoala/telepot.git
+-e git+https://github.com/nickoala/telepot.git@master#egg=telepot
