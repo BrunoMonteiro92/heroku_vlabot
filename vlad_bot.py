@@ -17,7 +17,7 @@ def handle(msg):
     filaDiz = deque(maxlen=5)
     filaVlad = deque(maxlen=5)
 
-    print ('Command ' + command + ' received ...')
+    print ('Command ' + command.encode('utf-8') + ' received ...')
 
     #LIVE
     pics = [f for f in os.listdir('/app/images/')]
