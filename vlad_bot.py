@@ -28,7 +28,7 @@ def handle(msg):
     responseAsk = ["Calma, explica aí q eu não entendi", "Q?", "Depende", "Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!", "Peraí que eu to comendo"]
 
     if command == '/help' or command == '/help@vlademeeer_bot':
-        bot.sendMessage(chat_id, "*Vlad Bot v3.5*\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - `faço um comentário extremamente enriquecedor para a conversa`\n*/askvlad* - `respostas honestas para qualquer pergunta`\n*/mito* - `minhas fotos sensuais que levam até homens a loucura`\n*/calma* - `CALMA SENHORA`\n*/diz* - `minha voz inconfundível pra vc se deliciar`\n\n\n*Developed by:* `Yuri Reis / Bruno Monteiro`", parse_mode='Markdown')
+        bot.sendMessage(chat_id, "*Vlad Bot v3.5*\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - `faço um comentário extremamente enriquecedor para a conversa`\n*/askvlad* - `respostas honestas para qualquer pergunta`\n*/mito* - `minhas fotos sensuais que levam até homens a loucura`\n*/calma* - `CALMA SENHORA`\n*/diz* - `minha voz inconfundível pra vc se deliciar`\n\n\n*Developed by: * `Yuri Reis / Bruno Monteiro`", parse_mode='Markdown')
     
     if command == '/calma' or command == '/calma@vlademeeer_bot':
         calma = random.randint(0,1);
