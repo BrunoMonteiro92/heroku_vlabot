@@ -26,11 +26,11 @@ def handle(msg):
     pics = [f for f in os.listdir('/app/images/')]
     audios = [f for f in os.listdir('/app/sound/')]
 
-    response = ["Gua", "Beisso aí","Risos", "Hausha7hausua7e", "Calma", "Nossa", "Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua" , "Nao ma", "Bacana", "Essa fera", "Que loucura", "O loco bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora", "Meu nome é Vladimir Lima tenho 24 anos, faço cerveja, ando de bicicleta e só", "Complicado esse humor", "boa", "Esse tempo todo?", "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado"]
+    response = ["Gua", "Beisso aí","Risos", "Hausha7hausua7e", "Calma", "Nossa", "Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua" , "Nao ma", "Bacana", "Essa fera", "Que loucura", "O loco Bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora", "Meu nome é Vladimir Lima tenho 24 anos, faço cerveja, ando de bicicleta e só", "Complicado esse humor", "boa", "Esse tempo todo?", "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado"]
     responseAsk = ["Calma, explica aí q eu não entendi", "Q?", "Depende", "Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!", "Peraí que eu to comendo"]
 
     if command == '/help' or command == '/help@vlademeeer_bot':
-        bot.sendMessage(chat_id, "*Vlad Bot v4.0*\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - `faço um comentário extremamente enriquecedor para a conversa, ou você pode escolher um número entre` *[0 e " + repr(len(response)-1) + "]* `e eu vou falar a frase referente a esse número`\n*/askvlad* - `respostas honestas para qualquer pergunta`\n*/mito* - `minhas fotos sensuais que levam até homens a loucura, ou você pode escolher um número entre` *[0 e " + repr(len(pics)-1) + "]* `e eu vou mandar a foto referente a esse número`\n*/calma* - `CALMA SENHORA`\n*/diz* - `minha voz inconfundível pra vc se deliciar, você pode escolher um número entre` *[0 e " + repr(len(audios)-1) + "]* `e eu vou mandar o audio referente a esse número`\n\n\n*Developed by:* `Yuri Reis / Bruno Monteiro`", parse_mode='Markdown')
+        bot.sendMessage(chat_id, "*Vlad Bot v4.0.1*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - `faço um comentário extremamente enriquecedor para a conversa, ou você pode escolher um número entre` *[0 e " + repr(len(response)-1) + "]* `e eu vou falar a frase referente a esse número`\n*/askvlad* - `respostas honestas para qualquer pergunta`\n*/mito* - `minhas fotos sensuais que levam até homens a loucura, ou você pode escolher um número entre` *[0 e " + repr(len(pics)-1) + "]* `e eu vou mandar a foto referente a esse número`\n*/calma* - `CALMA SENHORA`\n*/diz* - `minha voz inconfundível pra vc se deliciar, você pode escolher um número entre` *[0 e " + repr(len(audios)-1) + "]* `e eu vou mandar o audio referente a esse número`\n\n\n*Desenvolvido por:* `Yuri Reis / Bruno Monteiro`", parse_mode='Markdown')
     
     if command == '/calma' or command == '/calma@vlademeeer_bot':
         calma = random.randint(0,1);
@@ -56,7 +56,7 @@ def handle(msg):
         c, r=command.split(' ', 1)
         if not r.isdigit():
             print (r.encode('utf-8') + ' IS NOT A NUMBER !!!')
-            bot.sendMessage(chat_id, "Bicho... Eu acho que *" + r.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+            bot.sendMessage(chat_id, "Ma... Eu acho que *" + r.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
         else:
             r = int(r)
             if r < 0 or r > len(response)-1:
@@ -82,7 +82,7 @@ def handle(msg):
         c, p = command.split(' ', 1)
         if not p.isdigit():
             print (p.encode('utf-8') + ' IS NOT A NUMBER !!!')
-            bot.sendMessage(chat_id, "Bicho... Eu acho que *" + p.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+            bot.sendMessage(chat_id, "Ma... Eu acho que *" + p.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
         else:
             p = int(p)
             if p < 0 or p > len(pics)-1:
@@ -118,7 +118,7 @@ def handle(msg):
         c, a = command.split(' ', 1)
         if not a.isdigit():
             print (a.encode('utf-8') + ' IS NOT A NUMBER !!!')
-            bot.sendMessage(chat_id, "Bicho... Eu acho que *" + a.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+            bot.sendMessage(chat_id, "Ma... Eu acho que *" + a.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
         else:
             a = int(a)
             if a < 0 or a > len(audios)-1:
