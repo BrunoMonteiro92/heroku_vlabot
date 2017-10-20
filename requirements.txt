@@ -1,2 +1,2 @@
 -e git+https://github.com/nickoala/telepot.git@master#egg=telepot
-pip install emoji
+emoji==0.4.5
