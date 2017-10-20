@@ -55,7 +55,7 @@ def handle(msg):
     elif '/vlad' in command:
         c, r=command.split(' ', 1)
         if not r.isdigit():
-            print (r + ' IS NOT A NUMBER !!!')
+            print (r.encode('utf-8') + ' IS NOT A NUMBER !!!')
             bot.sendMessage(chat_id, "Bicho... Eu acho que *" + r.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
         else:
             r = int(r)
@@ -81,7 +81,7 @@ def handle(msg):
     elif '/mito' in command:
         c, p = command.split(' ', 1)
         if not p.isdigit():
-            print (p + ' IS NOT A NUMBER !!!')
+            print (p.encode('utf-8') + ' IS NOT A NUMBER !!!')
             bot.sendMessage(chat_id, "Bicho... Eu acho que *" + p.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
         else:
             p = int(p)
@@ -117,7 +117,7 @@ def handle(msg):
     elif '/diz' in command:
         c, a = command.split(' ', 1)
         if not a.isdigit():
-            print (a + ' IS NOT A NUMBER !!!')
+            print (a.encode('utf-8') + ' IS NOT A NUMBER !!!')
             bot.sendMessage(chat_id, "Bicho... Eu acho que *" + a.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
         else:
             a = int(a)
