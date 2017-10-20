@@ -6,7 +6,9 @@ import pprint
 import telepot
 import random
 import os
+import emoji
 from collections import deque
+from telepot.loop import MessageLoop
 
 filaMito = deque(maxlen=20)
 filaDiz = deque(maxlen=5)
@@ -18,7 +20,7 @@ def handle(msg):
     chat_id = msg['chat']['id']
     command = msg['text']
 
-    print ('Command ' + command.encode('utf-8') + ' received ...')
+    print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
 
     #LIVE
     pics = [f for f in os.listdir('/app/images/')]
@@ -28,7 +30,7 @@ def handle(msg):
     responseAsk = ["Calma, explica aí q eu não entendi", "Q?", "Depende", "Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!", "Peraí que eu to comendo"]
 
     if command == '/help' or command == '/help@vlademeeer_bot':
-        bot.sendMessage(chat_id, "*Vlad Bot v3.5*\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - `faço um comentário extremamente enriquecedor para a conversa`\n*/askvlad* - `respostas honestas para qualquer pergunta`\n*/mito* - `minhas fotos sensuais que levam até homens a loucura`\n*/calma* - `CALMA SENHORA`\n*/diz* - `minha voz inconfundível pra vc se deliciar`\n\n\n*Developed by: * `Yuri Reis / Bruno Monteiro`", parse_mode='Markdown')
+        bot.sendMessage(chat_id, "*Vlad Bot v4.0*\n\nBicho, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - `faço um comentário extremamente enriquecedor para a conversa, ou você pode escolher um número entre` *[0 e " + repr(len(response)-1) + "]* `e eu vou falar a frase referente a esse número`\n*/askvlad* - `respostas honestas para qualquer pergunta`\n*/mito* - `minhas fotos sensuais que levam até homens a loucura, ou você pode escolher um número entre` *[0 e " + repr(len(pics)-1) + "]* `e eu vou mandar a foto referente a esse número`\n*/calma* - `CALMA SENHORA`\n*/diz* - `minha voz inconfundível pra vc se deliciar, você pode escolher um número entre` *[0 e " + repr(len(audios)-1) + "]* `e eu vou mandar o audio referente a esse número`\n\n\n*Developed by:* `Yuri Reis / Bruno Monteiro`", parse_mode='Markdown')
     
     if command == '/calma' or command == '/calma@vlademeeer_bot':
         calma = random.randint(0,1);
@@ -50,6 +52,19 @@ def handle(msg):
 
         print ('Sending ' + response[op] + ' to chat: ' + repr(chat_id) + ' ...')
         bot.sendMessage(chat_id, response[op])
+    elif '/vlad' in command:
+        c, r=command.split(' ', 1)
+        if not r.isdigit():
+            print (r + ' IS NOT A NUMBER !!!')
+            bot.sendMessage(chat_id, "Bicho... Eu acho que *" + r.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+        else:
+            r = int(r)
+            if r < 0 or r > len(response)-1:
+                print (repr(r) + ' IS NOT IN RANGE !!!')
+                bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(response)-1) + "]*", parse_mode='Markdown')
+            else:
+                print ('Sending ' + response[r] + ' to chat: ' + repr(chat_id) + ' ...')
+                bot.sendMessage(chat_id, response[r])
 
     if command == '/mito' or command == '/mito@vlademeeer_bot':
         img = random.randint(0,len(pics)-1);
@@ -63,6 +78,22 @@ def handle(msg):
 
         bot.sendPhoto(chat_id, f)
         f.close()
+    elif '/mito' in command:
+        c, p = command.split(' ', 1)
+        if not p.isdigit():
+            print (p + ' IS NOT A NUMBER !!!')
+            bot.sendMessage(chat_id, "Bicho... Eu acho que *" + p.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+        else:
+            p = int(p)
+            if p < 0 or p > len(pics)-1:
+                print (repr(p) + ' IS NOT IN RANGE !!!')
+                bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(pics)-1) + "]*", parse_mode='Markdown')
+            else:
+                f = open('/app/images/%s' % pics[p], 'rb')
+                print ('Sending pic ' + pics[p] + ' to chat: ' + repr(chat_id) + ' ...')
+
+                bot.sendPhoto(chat_id, f)
+                f.close()
 
     if command == '/askvlad' or command == '/askvlad@vlademeeer_bot':
         bot.sendMessage(chat_id, "Algo de errado não está certo, cadê a pergunta?")
@@ -83,9 +114,25 @@ def handle(msg):
 
         bot.sendVoice(chat_id, f)
         f.close()
+    elif '/diz' in command:
+        c, a = command.split(' ', 1)
+        if not a.isdigit():
+            print (a + ' IS NOT A NUMBER !!!')
+            bot.sendMessage(chat_id, "Bicho... Eu acho que *" + a.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+        else:
+            a = int(a)
+            if a < 0 or a > len(audios)-1:
+                print (repr(a) + ' IS NOT IN RANGE !!!')
+                bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(audios)-1) + "]*", parse_mode='Markdown')
+            else:
+                f = open('/app/sound/%s' % audios[a], 'rb')  
+                print ('Sending audio ' + audios[a] + ' to chat: ' + repr(chat_id) + ' ...')
+
+                bot.sendVoice(chat_id, f)
+                f.close()
 
 bot = telepot.Bot(TOKEN)
-bot.message_loop(handle)
+MessageLoop(bot, handle).run_as_thread()
 print ('Listening ...')
 
 # Keep the program running.
