@@ -138,6 +138,7 @@ def handle(msg):
 	elif re.search(r'\btop\b', command, flags=re.IGNORECASE):
 		print ('Sending TOPPER to chat: ' + repr(chat_id) + ' ...')
 		bot.sendMessage(chat_id, "Não diga top, diga xibata")
+		#ué
 
 bot = telepot.Bot(TOKEN)
 MessageLoop(bot, handle).run_as_thread()
