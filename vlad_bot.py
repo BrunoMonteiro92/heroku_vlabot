@@ -1,4 +1,4 @@
-	# coding=utf-8
+# coding=utf-8
 
 import sys
 import time
@@ -18,6 +18,8 @@ filaVlad = deque(maxlen=5)
 TOKEN = os.environ['TELEGRAM_TOKEN']
 
 def handle(msg):
+	if 'text' not in msg:
+		return	
 	chat_id = msg['chat']['id']
 	command = msg['text']
 
