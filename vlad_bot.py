@@ -24,8 +24,7 @@ def handle(msg):
 	command = msg['text']
 
 	if (command.startswith('/')):
-		print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
-
+		
 		pics = [f for f in os.listdir('/app/images/')]
 		audios = [f for f in os.listdir('/app/sound/')]
 
@@ -33,10 +32,12 @@ def handle(msg):
 		responseAsk = ["Calma, explica aí q eu não entendi", "Q?", "Depende", "Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!", "Peraí que eu to comendo"]
 
 		if command == '/help' or command == '/help@vlademeeer_bot':
-			bot.sendMessage(chat_id, "*Vlad Bot v4.2*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/mito* - minhas fotos sensuais que leva todo mundo a loucura\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
+			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
+			bot.sendMessage(chat_id, "*Vlad Bot v4.3*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/mito* - minhas fotos sensuais que leva todo mundo a loucura\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
 			#bot.sendMessage(chat_id, "*Vlad Bot v4.0.1*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa, ou você pode escolher um número entre *[0 e " + repr(len(response)-1) + "]* e eu vou falar a frase referente a esse número\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/mito* - minhas fotos sensuais que leva todo mundo a loucura, ou você pode escolher um número entre *[0 e " + repr(len(pics)-1) + "]* e eu vou mandar a foto referente a esse número\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar, você pode escolher um número entre *[0 e " + repr(len(audios)-1) + "]* e eu vou mandar o audio referente a esse número\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
 		
 		if command == '/calma' or command == '/calma@vlademeeer_bot':
+			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
 			calma = random.randint(0,1);
 			if calma == 0:
 				print ('Sending calma to chat: ' + repr(chat_id) + ' ...')
@@ -48,6 +49,7 @@ def handle(msg):
 				bot.sendPhoto(chat_id, f)
 
 		if command == '/vlad' or command == '/vlad@vlademeeer_bot':
+			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
 			op = random.randint(0,len(response)-1);
 
 			while op in filaVlad:
@@ -72,17 +74,25 @@ def handle(msg):
 		'''
 
 		if command == '/mito' or command == '/mito@vlademeeer_bot':
+			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
 			img = random.randint(0,len(pics)-1);
-
 			while img in filaMito:
 				img = random.randint(0,len(pics)-1);
 			filaMito.append(img)
 
-			f = open('/app/images/%s' % pics[img], 'rb')
-			print ('Sending pic ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
+			if (img != 0):
+				f = open('/app/images/%s' % pics[img], 'rb')
+				print ('Sending pic ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
 
-			bot.sendPhoto(chat_id, f)
-			f.close()
+				bot.sendPhoto(chat_id, f)
+				f.close()
+			else:
+				f = open('/app/images/%s' % pics[img], 'rb')
+				print ('Sending gif ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
+
+				bot.sendMedia(chat_id, f)
+				f.close()
+
 		'''elif '/mito' in command:
 			c, p = command.split(' ', 1)
 			if not p.isdigit():
@@ -102,13 +112,16 @@ def handle(msg):
 		'''
 
 		if command == '/askvlad' or command == '/askvlad@vlademeeer_bot':
+			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
 			bot.sendMessage(chat_id, "Algo de errado não está certo, cadê a pergunta?")
 		elif '/askvlad' in command:
+			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
 			opAsk = random.randint(0,len(responseAsk)-1);
 			print ('Sending ' + responseAsk[opAsk] + ' to chat: ' + repr(chat_id) + ' ...')
 			bot.sendMessage(chat_id, responseAsk[opAsk])
 
 		if command == '/diz' or command == '/diz@vlademeeer_bot':
+			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
 			aud = random.randint(0,len(audios)-1)
 
 			while aud in filaDiz:
