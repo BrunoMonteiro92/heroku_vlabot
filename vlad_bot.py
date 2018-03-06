@@ -80,17 +80,17 @@ def handle(msg):
 				img = random.randint(0,len(pics)-1);
 			filaMito.append(img)
 
-			if (img != 0):
-				f = open('/app/images/%s' % pics[img], 'rb')
-				print ('Sending pic ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
-
-				bot.sendPhoto(chat_id, f)
-				f.close()
-			else:
+			if (img == 0):
 				f = open('/app/images/%s' % pics[img], 'rb')
 				print ('Sending gif ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
 
 				bot.sendMedia(chat_id, f)
+				f.close()
+			else:
+				f = open('/app/images/%s' % pics[img], 'rb')
+				print ('Sending pic ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
+
+				bot.sendPhoto(chat_id, f)
 				f.close()
 
 		'''elif '/mito' in command:
@@ -151,6 +151,7 @@ def handle(msg):
 						f.close()
 			'''
 	elif re.search(r'\btop\b', command, flags=re.IGNORECASE):
+		print ('Command TOP received from chat ' + repr(chat_id) + ' ...')
 		print ('Sending TOPPER to chat: ' + repr(chat_id) + ' ...')
 		bot.sendMessage(chat_id, "Não diga top, diga xibata")
 		#ué
