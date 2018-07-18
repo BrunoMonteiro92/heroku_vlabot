@@ -163,4 +163,3 @@ print ('Listening ...')
 # Keep the program running.
 while 1:
 	time.sleep(10)
-	#chupa minha rola yuri aeaeae
