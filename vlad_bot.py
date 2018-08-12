@@ -28,7 +28,7 @@ def handle(msg):
 		pics = [f for f in os.listdir('/app/images/')]
 		audios = [f for f in os.listdir('/app/sound/')]
 
-		response = ["Gua", "Beisso aí","Risos", "Hausha7hausua7e", "Calma", "Nossa", "Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua" , "Nao ma", "Bacana", "Essa fera", "Que loucura", "O loco Bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora", "Meu nome é Vladimir Lima tenho 24 anos, faço cerveja, ando de bicicleta e só", "Complicado esse humor", "boa", "Esse tempo todo?", "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado"]
+		response = ["Gua", "Beisso aí","Risos", "Hausha7hausua7e", "Calma", "Nossa", "Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua" , "Nao ma", "Bacana", "Essa fera", "Que loucura", "O loco Bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora", "Meu nome é Vladimir Lima tenho 24 anos, faço cerveja, ando de bicicleta e só", "Complicado esse humor", "boa", "Esse tempo todo?", "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado", "Bebam água"]
 		responseAsk = ["Calma, explica aí q eu não entendi", "Q?", "Depende", "Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!", "Peraí que eu to comendo"]
 
 		if command == '/help' or command == '/help@vlademeeer_bot':
@@ -80,7 +80,7 @@ def handle(msg):
 				img = random.randint(0,len(pics)-1);
 			filaMito.append(img)
 
-			if (img == 0):
+			if (img == 0 or img == 1):
 				print ('Sending gif ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
 				with open('/app/images/%s' % pics[img], 'rb') as f:
 					bot.sendDocument(chat_id, f)
