@@ -15,6 +15,7 @@ filaMito = deque(maxlen=20)
 filaDiz = deque(maxlen=5)
 filaVlad = deque(maxlen=5)
 
+#achou que ia roubar o bot? ACHOU ERRADO OTARIO!
 TOKEN = os.environ['TELEGRAM_TOKEN']
 
 def handle(msg):
@@ -33,7 +34,7 @@ def handle(msg):
 
 		if command == '/help' or command == '/help@vlademeeer_bot':
 			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
-			bot.sendMessage(chat_id, "*Vlad Bot v4.4*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/mito* - minhas fotos sensuais que leva todo mundo a loucura\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
+			bot.sendMessage(chat_id, "*Vlad Bot v4.5*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/mito* - minhas fotos sensuais que leva todo mundo a loucura\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
 			#bot.sendMessage(chat_id, "*Vlad Bot v4.0.1*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa, ou você pode escolher um número entre *[0 e " + repr(len(response)-1) + "]* e eu vou falar a frase referente a esse número\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/mito* - minhas fotos sensuais que leva todo mundo a loucura, ou você pode escolher um número entre *[0 e " + repr(len(pics)-1) + "]* e eu vou mandar a foto referente a esse número\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar, você pode escolher um número entre *[0 e " + repr(len(audios)-1) + "]* e eu vou mandar o audio referente a esse número\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
 		
 		if command == '/calma' or command == '/calma@vlademeeer_bot':
@@ -80,7 +81,7 @@ def handle(msg):
 				img = random.randint(0,len(pics)-1);
 			filaMito.append(img)
 
-			if (img == 0 or img == 1):
+			if (pics[img].endswith('.gif')):
 				print ('Sending gif ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
 				with open('/app/images/%s' % pics[img], 'rb') as f:
 					bot.sendDocument(chat_id, f)
