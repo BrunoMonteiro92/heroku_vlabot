@@ -9,7 +9,7 @@ O bot mais amado do Telegram <3
 ```bash
 /vlad - faço um comentário extremamente enriquecedor para a conversa
 /askvlad - respostas honestas para qualquer pergunta
-/mito - minhas fotos sensuais que levam até homens a loucura
+/fera - minhas fotos sensuais que levam até homens a loucura
 /calma - CALMA SENHORA
 /diz - minha voz inconfundível pra vc se deliciar
 ```
