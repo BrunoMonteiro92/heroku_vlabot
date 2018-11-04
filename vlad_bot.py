@@ -51,14 +51,14 @@ def handle(msg):
 
 		if command == '/vlad' or command == '/vlad@vlademeeer_bot':
 			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
-			op = random.randint(0,len(response)-1);
+			op = random.choice(response)
 
 			while op in filaVlad:
-				op = random.randint(0,len(response)-1)
+				op = random.choice(response)
 			filaVlad.append(op)
 
-			print ('Sending ' + response[op] + ' to chat: ' + repr(chat_id) + ' ...')
-			bot.sendMessage(chat_id, response[op])
+			print ('Sending ***' + op + '*** to chat: ' + repr(chat_id) + ' ...')
+			bot.sendMessage(chat_id, op)
 		'''elif '/vlad' in command:
 				c, r=command.split(' ', 1)
 			if not r.isdigit():
@@ -76,19 +76,19 @@ def handle(msg):
 
 		if command == '/fera' or command == '/fera@vlademeeer_bot':
 			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
-			img = random.randint(0,len(pics)-1);
+			img = random.choice(pics)
 			while img in filaFera:
-				img = random.randint(0,len(pics)-1);
+				img = random.choice(pics)
 			filaFera.append(img)
 
-			if (pics[img].endswith('.gif')):
-				print ('Sending gif ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
-				with open('/app/images/%s' % pics[img], 'rb') as f:
+			if (img.endswith('.gif')):
+				print ('Sending gif ***' + img + '*** to chat: ' + repr(chat_id) + ' ...')
+				with open('/app/images/%s' % img, 'rb') as f:
 					bot.sendDocument(chat_id, f)
 				f.close()
 			else:
-				print ('Sending pic ' + pics[img] + ' to chat: ' + repr(chat_id) + ' ...')
-				with open('/app/images/%s' % pics[img], 'rb') as f:
+				print ('Sending pic ***' + img + '*** to chat: ' + repr(chat_id) + ' ...')
+				with open('/app/images/%s' % img, 'rb') as f:
 					bot.sendPhoto(chat_id, f)
 				f.close()
 
@@ -118,20 +118,20 @@ def handle(msg):
 			bot.sendMessage(chat_id, "Algo de errado não está certo, cadê a pergunta?")
 		elif '/askvlad' in command:
 			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
-			opAsk = random.randint(0,len(responseAsk)-1);
-			print ('Sending ' + responseAsk[opAsk] + ' to chat: ' + repr(chat_id) + ' ...')
-			bot.sendMessage(chat_id, responseAsk[opAsk])
+			opAsk = random.choice(responseAsk)
+			print ('Sending ***' + opAsk + '*** to chat: ' + repr(chat_id) + ' ...')
+			bot.sendMessage(chat_id, opAsk)
 
 		if command == '/diz' or command == '/diz@vlademeeer_bot':
 			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
-			aud = random.randint(0,len(audios)-1)
+			aud = random.choice(audios)
 
 			while aud in filaDiz:
-				aud = random.randint(0,len(audios)-1)
+				aud = random.choice(audios)
 			filaDiz.append(aud)
 
-			print ('Sending audio ' + audios[aud] + ' to chat: ' + repr(chat_id) + ' ...')
-			with open('/app/sound/%s' % audios[aud], 'rb') as f:
+			print ('Sending audio ***' + aud + '*** to chat: ' + repr(chat_id) + ' ...')
+			with open('/app/sound/%s' % aud, 'rb') as f:
 				bot.sendVoice(chat_id, f)
 			f.close()
 			'''elif '/diz' in command:
