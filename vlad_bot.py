@@ -13,7 +13,7 @@ from telepot.loop import MessageLoop
 
 filaFera = deque(maxlen=20)
 filaDiz = deque(maxlen=5)
-filaVlad = deque(maxlen=5)
+#filaVlad = deque(maxlen=5)
 
 #achou que ia roubar o bot? ACHOU ERRADO OTARIO!
 TOKEN = os.environ['TELEGRAM_TOKEN']
@@ -29,12 +29,12 @@ def handle(msg):
 		pics = [f for f in os.listdir('/app/images/')]
 		audios = [f for f in os.listdir('/app/sound/')]
 
-		response = ["Gua", "Beisso aí","Risos", "Hausha7hausua7e", "Calma", "Nossa", "Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua" , "Nao ma", "Bacana", "Essa fera", "Que loucura", "O loco Bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora", "Meu nome é Vladimir Lima tenho 24 anos, faço cerveja, ando de bicicleta e só", "Complicado esse humor", "boa", "Esse tempo todo?", "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado", "Bebam água"]
+		response = ["Gua", "Beisso aí", "Risos", "Hausha7hausua7e", "Calma", "Te fode carlos", "Nossa", "Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua" , "Nao ma", "Bacana", "Essa fera", "Que loucura", "Te fode carlos", "O loco Bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora", "Meu nome é Vladimir Lima tenho 24 anos, faço cerveja, ando de bicicleta e só", "Complicado esse humor", "boa", "Esse tempo todo?", "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado", "Bebam água"]
 		responseAsk = ["Calma, explica aí q eu não entendi", "Q?", "Depende", "Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!", "Peraí que eu to comendo"]
 
 		if command == '/help' or command == '/help@vlademeeer_bot':
 			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
-			bot.sendMessage(chat_id, "*Vlad Bot v4.6*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/fera* - minhas fotos sensuais que leva todo mundo a loucura\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
+			bot.sendMessage(chat_id, "*Vlad Bot v4.7*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/fera* - minhas fotos sensuais que leva todo mundo a loucura\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
 			#bot.sendMessage(chat_id, "*Vlad Bot v4.0.1*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa, ou você pode escolher um número entre *[0 e " + repr(len(response)-1) + "]* e eu vou falar a frase referente a esse número\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/fera* - minhas fotos sensuais que leva todo mundo a loucura, ou você pode escolher um número entre *[0 e " + repr(len(pics)-1) + "]* e eu vou mandar a foto referente a esse número\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar, você pode escolher um número entre *[0 e " + repr(len(audios)-1) + "]* e eu vou mandar o audio referente a esse número\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
 		
 		if command == '/calma' or command == '/calma@vlademeeer_bot':
@@ -53,9 +53,9 @@ def handle(msg):
 			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
 			op = random.choice(response)
 
-			while op in filaVlad:
+			'''while op in filaVlad:
 				op = random.choice(response)
-			filaVlad.append(op)
+			filaVlad.append(op)'''
 
 			print ('Sending ***' + op + '*** to chat: ' + repr(chat_id) + ' ...')
 			bot.sendMessage(chat_id, op)
