@@ -1,4 +1,9 @@
 # Vlad Bot
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/fuck-it-ship-it.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
 *Telegram bot using [telepot API](https://github.com/nickoala/telepot)*
 
 O bot mais amado do Telegram <3
