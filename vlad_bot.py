@@ -152,10 +152,10 @@ def handle(msg):
 						bot.sendVoice(chat_id, f)
 						f.close()
 			'''
-	elif re.search(r'\btop\b', command, flags=re.IGNORECASE):
+	elif re.search(r'\btop[^ao]*\b', command, flags=re.IGNORECASE):
 		print ('Command TOP received from chat ' + repr(chat_id) + ' ...')
 		print ('Sending TOPPER to chat: ' + repr(chat_id) + ' ...')
-		bot.sendMessage(chat_id, "Não diga top, diga xibata")
+		bot.sendMessage(chat_id, "Não diga top, diga xibata", reply_to_message_id=msg_id)
 
 bot = telepot.Bot(TOKEN)
 MessageLoop(bot, handle).run_as_thread()
