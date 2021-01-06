@@ -162,5 +162,9 @@ MessageLoop(bot, handle).run_as_thread()
 print ('Listening ...')
 
 # Keep the program running
+<<<<<<< HEAD
 while 1:
+=======
+.while 1:
+>>>>>>> b49fdf1c7e973b768e5e58d11d9bb7b0ac1a4f7c
 	time.sleep(10)
