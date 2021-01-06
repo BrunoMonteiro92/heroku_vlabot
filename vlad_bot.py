@@ -33,11 +33,11 @@ def handle(msg):
 		responseAsk = ["Calma, explica aí q eu não entendi", "Q?", "Depende", "Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode", "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!", "Peraí que eu to comendo"]
 
 		if command == '/help' or command == '/help@vlademeeer_bot':
-			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
+			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			bot.sendMessage(chat_id, "*Vlad Bot v4.7*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/fera* - minhas fotos sensuais que leva todo mundo a loucura\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
 		
 		if command == '/calma' or command == '/calma@vlademeeer_bot':
-			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
+			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			calma = random.randint(0,1);
 			if calma == 0:
 				print ('Sending calma to chat: ' + repr(chat_id) + ' ...')
@@ -51,7 +51,7 @@ def handle(msg):
 				f.close()
 
 		if command == '/vlad' or command == '/vlad@vlademeeer_bot':
-			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
+			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			op = random.choice(response)
 
 			'''while op in filaVlad:
@@ -63,7 +63,7 @@ def handle(msg):
 		'''elif '/vlad' in command:
 				c, r=command.split(' ', 1)
 			if not r.isdigit():
-				print (r.encode('utf-8') + ' IS NOT A NUMBER !!!')
+				print (r + ' IS NOT A NUMBER !!!')
 				bot.sendMessage(chat_id, "Ma... Eu acho que *" + r.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
 			else:
 				r = int(r)
@@ -76,7 +76,7 @@ def handle(msg):
 		'''
 
 		if command == '/fera' or command == '/fera@vlademeeer_bot':
-			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
+			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			img = random.choice(pics)
 			while img in filaFera:
 				img = random.choice(pics)
@@ -96,7 +96,7 @@ def handle(msg):
 		'''elif '/fera' in command:
 			c, p = command.split(' ', 1)
 			if not p.isdigit():
-				print (p.encode('utf-8') + ' IS NOT A NUMBER !!!')
+				print (p + ' IS NOT A NUMBER !!!')
 				bot.sendMessage(chat_id, "Ma... Eu acho que *" + p.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
 			else:
 				p = int(p)
@@ -115,16 +115,16 @@ def handle(msg):
 			bot.sendMessage(chat_id, 'Opa querido(a), esse comando foi substituído pelo /fera, por motivos de **FASCISMO**, perdão pelo incoveniente', parse_mode='Markdown')
 
 		if command == '/askvlad' or command == '/askvlad@vlademeeer_bot':
-			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
+			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			bot.sendMessage(chat_id, "Algo de errado não está certo, cadê a pergunta?", reply_to_message_id=msg_id)
 		elif '/askvlad' in command:
-			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
+			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			opAsk = random.choice(responseAsk)
 			print ('Sending ***' + opAsk + '*** to chat: ' + repr(chat_id) + ' ...')
 			bot.sendMessage(chat_id, opAsk, reply_to_message_id=msg_id)
 
 		if command == '/diz' or command == '/diz@vlademeeer_bot':
-			print ('Command ' + command.encode('utf-8') + ' received from chat ' + repr(chat_id) + ' ...')
+			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			aud = random.choice(audios)
 
 			while aud in filaDiz:
@@ -138,7 +138,7 @@ def handle(msg):
 			'''elif '/diz' in command:
 				c, a = command.split(' ', 1)
 				if not a.isdigit():
-					print (a.encode('utf-8') + ' IS NOT A NUMBER !!!')
+					print (a + ' IS NOT A NUMBER !!!')
 					bot.sendMessage(chat_id, "Ma... Eu acho que *" + a.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
 				else:
 					a = int(a)
@@ -161,6 +161,6 @@ bot = telepot.Bot(TOKEN)
 MessageLoop(bot, handle).run_as_thread()
 print ('Listening ...')
 
-# Keep the program running.
+# Keep the program running
 while 1:
 	time.sleep(10)
