@@ -6,7 +6,6 @@ import pprint
 import telepot
 import random
 import os
-import emoji
 import re
 from collections import deque
 from telepot.loop import MessageLoop
@@ -64,7 +63,7 @@ def handle(msg):
 				c, r=command.split(' ', 1)
 			if not r.isdigit():
 				print (r + ' IS NOT A NUMBER !!!')
-				bot.sendMessage(chat_id, "Ma... Eu acho que *" + r.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+				bot.sendMessage(chat_id, "Ma... Eu acho que *" + r.upper() + "* nao eh um numero ", parse_mode='Markdown')
 			else:
 				r = int(r)
 				if r < 0 or r > len(response)-1:
@@ -139,7 +138,7 @@ def handle(msg):
 				c, a = command.split(' ', 1)
 				if not a.isdigit():
 					print (a + ' IS NOT A NUMBER !!!')
-					bot.sendMessage(chat_id, "Ma... Eu acho que *" + a.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+					bot.sendMessage(chat_id, "Ma... Eu acho que *" + a.upper() + "* nao eh um numero ", parse_mode='Markdown')
 				else:
 					a = int(a)
 					if a < 0 or a > len(audios)-1:
