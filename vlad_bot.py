@@ -37,7 +37,7 @@ def handle(msg):
 		
 		if command == '/calma' or command == '/calma@vlademeeer_bot':
 			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
-			calma = random.randint(0,1);
+			calma = random.randint(0,1)
 			if calma == 0:
 				print ('Sending calma to chat: ' + repr(chat_id) + ' ...')
 				with open('/app/calma.jpg', 'rb') as f:
