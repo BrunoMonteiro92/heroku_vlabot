@@ -18,13 +18,13 @@ TOKEN = os.environ['TELEGRAM_TOKEN']
 
 def handle(msg):
 	if 'text' not in msg:
-		return	
+		return
 	chat_id = msg['chat']['id']
 	command = msg['text']
 	msg_id = msg['message_id']
 
 	if (command.startswith('/')):
-		
+
 		pics = [f for f in os.listdir('/app/images/')]
 		audios = [f for f in os.listdir('/app/sound/')]
 
@@ -34,7 +34,7 @@ def handle(msg):
 		if command == '/help' or command == '/help@vlademeeer_bot':
 			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			bot.sendMessage(chat_id, "*Vlad Bot v4.7*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\n\n*/askvlad* - respostas honestas para qualquer pergunta\n\n*/fera* - minhas fotos sensuais que leva todo mundo a loucura\n\n*/calma* - CALMA SENHORA\n\n*/diz* - minha voz inconfundível pra vc se deliciar\n\n\n*Desenvolvido por:* Yuri Reis / Bruno Monteiro", parse_mode='Markdown')
-		
+
 		if command == '/calma' or command == '/calma@vlademeeer_bot':
 			print ('Command ' + command + ' received from chat ' + repr(chat_id) + ' ...')
 			calma = random.randint(0,1)
@@ -145,7 +145,7 @@ def handle(msg):
 						print (repr(a) + ' IS NOT IN RANGE !!!')
 						bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(audios)-1) + "]*", parse_mode='Markdown')
 					else:
-						with open('/app/sound/%s' % audios[a], 'rb')  
+						with open('/app/sound/%s' % audios[a], 'rb')
 						print ('Sending audio ' + audios[a] + ' to chat: ' + repr(chat_id) + ' ...')
 
 						bot.sendVoice(chat_id, f)
