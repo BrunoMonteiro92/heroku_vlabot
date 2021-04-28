@@ -60,25 +60,25 @@ def handle(msg):
             op = random.choice(response)
 
             '''while op in filaVlad:
-				op = random.choice(response)
-			filaVlad.append(op)'''
+                op = random.choice(response)
+            filaVlad.append(op)'''
 
             print('Sending ***' + op + '*** to chat: ' + repr(chat_id) + ' ...')
             bot.sendMessage(chat_id, op)
         '''elif '/vlad' in command:
-				c, r=command.split(' ', 1)
-			if not r.isdigit():
-				print (r + ' IS NOT A NUMBER !!!')
-				bot.sendMessage(chat_id, "Ma... Eu acho que *" + r.upper() + "* nao eh um numero ", parse_mode='Markdown')
-			else:
-				r = int(r)
-				if r < 0 or r > len(response)-1:
-					print (repr(r) + ' IS NOT IN RANGE !!!')
-					bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(response)-1) + "]*", parse_mode='Markdown')
-				else:
-					print ('Sending ' + response[r] + ' to chat: ' + repr(chat_id) + ' ...')
-					bot.sendMessage(chat_id, response[r])
-		'''
+                c, r=command.split(' ', 1)
+            if not r.isdigit():
+                print (r + ' IS NOT A NUMBER !!!')
+                bot.sendMessage(chat_id, "Ma... Eu acho que *" + r.upper() + "* nao eh um numero ", parse_mode='Markdown')
+            else:
+                r = int(r)
+                if r < 0 or r > len(response)-1:
+                    print (repr(r) + ' IS NOT IN RANGE !!!')
+                    bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(response)-1) + "]*", parse_mode='Markdown')
+                else:
+                    print ('Sending ' + response[r] + ' to chat: ' + repr(chat_id) + ' ...')
+                    bot.sendMessage(chat_id, response[r])
+        '''
 
         if command == '/fera' or command == '/fera@vlademeeer_bot':
             print('Command ' + command +
@@ -102,22 +102,22 @@ def handle(msg):
                 f.close()
 
         '''elif '/fera' in command:
-			c, p = command.split(' ', 1)
-			if not p.isdigit():
-				print (p + ' IS NOT A NUMBER !!!')
-				bot.sendMessage(chat_id, "Ma... Eu acho que *" + p.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
-			else:
-				p = int(p)
-				if p < 0 or p > len(pics)-1:
-					print (repr(p) + ' IS NOT IN RANGE !!!')
-					bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(pics)-1) + "]*", parse_mode='Markdown')
-				else:
-					with open('/app/images/%s' % pics[p], 'rb')
-					print ('Sending pic ' + pics[p] + ' to chat: ' + repr(chat_id) + ' ...')
+            c, p = command.split(' ', 1)
+            if not p.isdigit():
+                print (p + ' IS NOT A NUMBER !!!')
+                bot.sendMessage(chat_id, "Ma... Eu acho que *" + p.upper() + "* nao eh um numero " + emoji.emojize(":thinking_face:"), parse_mode='Markdown')
+            else:
+                p = int(p)
+                if p < 0 or p > len(pics)-1:
+                    print (repr(p) + ' IS NOT IN RANGE !!!')
+                    bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(pics)-1) + "]*", parse_mode='Markdown')
+                else:
+                    with open('/app/images/%s' % pics[p], 'rb')
+                    print ('Sending pic ' + pics[p] + ' to chat: ' + repr(chat_id) + ' ...')
 
-					bot.sendPhoto(chat_id, f)
-					f.close()
-		'''
+                    bot.sendPhoto(chat_id, f)
+                    f.close()
+        '''
 
         if command == '/mito' or command == '/mito@vlademeeer_bot':
             bot.sendMessage(
@@ -151,22 +151,22 @@ def handle(msg):
                 bot.sendVoice(chat_id, f)
             f.close()
             '''elif '/diz' in command:
-				c, a = command.split(' ', 1)
-				if not a.isdigit():
-					print (a + ' IS NOT A NUMBER !!!')
-					bot.sendMessage(chat_id, "Ma... Eu acho que *" + a.upper() + "* nao eh um numero ", parse_mode='Markdown')
-				else:
-					a = int(a)
-					if a < 0 or a > len(audios)-1:
-						print (repr(a) + ' IS NOT IN RANGE !!!')
-						bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(audios)-1) + "]*", parse_mode='Markdown')
-					else:
-						with open('/app/sound/%s' % audios[a], 'rb')
-						print ('Sending audio ' + audios[a] + ' to chat: ' + repr(chat_id) + ' ...')
+                c, a = command.split(' ', 1)
+                if not a.isdigit():
+                    print (a + ' IS NOT A NUMBER !!!')
+                    bot.sendMessage(chat_id, "Ma... Eu acho que *" + a.upper() + "* nao eh um numero ", parse_mode='Markdown')
+                else:
+                    a = int(a)
+                    if a < 0 or a > len(audios)-1:
+                        print (repr(a) + ' IS NOT IN RANGE !!!')
+                        bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(len(audios)-1) + "]*", parse_mode='Markdown')
+                    else:
+                        with open('/app/sound/%s' % audios[a], 'rb')
+                        print ('Sending audio ' + audios[a] + ' to chat: ' + repr(chat_id) + ' ...')
 
-						bot.sendVoice(chat_id, f)
-						f.close()
-			'''
+                        bot.sendVoice(chat_id, f)
+                        f.close()
+            '''
     elif re.search(r'\btop[^ao]*\b', command, flags=re.IGNORECASE):
         print('Command TOP received from chat ' + repr(chat_id) + ' ...')
         print('Sending TOPPER to chat: ' + repr(chat_id) + ' ...')
