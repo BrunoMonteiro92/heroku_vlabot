@@ -176,10 +176,10 @@ def handle(msg):
                     bot.sendMessage(chat_id, "Ei... Éééééé... Tem que tá dentro do intervalo de *[0 até " + repr(
                         len(audios)-1) + "]*", parse_mode='Markdown')
                 else:
+                    print('Sending audio ' +
+                          audios[a] + ' to chat: ' + repr(chat_id) + ' ...')
                     with open('/app/sound/%s' % audios[a], 'rb') as f:
-                        print('Sending audio ' +
-                              audios[a] + ' to chat: ' + repr(chat_id) + ' ...')
-                    bot.sendVoice(chat_id, f)
+                        bot.sendVoice(chat_id, f)
                     f.close()
     elif re.search(r'\btop[^ao]*\b', command, flags=re.IGNORECASE):
         print('Command TOP received from chat ' + repr(chat_id) + ' ...')
