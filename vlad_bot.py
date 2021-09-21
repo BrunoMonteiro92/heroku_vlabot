@@ -186,11 +186,12 @@ def handle(msg):
         print('Sending TOPPER to chat: ' + repr(chat_id) + ' ...')
         bot.sendMessage(chat_id, "Não diga top, diga xibata",
                         reply_to_message_id=msg_id)
-    elif re.search(r'\bal[o|ô]*\b', command, flags=re.IGNORECASE):
+    elif re.search(r'\ba+l[o|ô]+\b', command, flags=re.IGNORECASE):
         print('Command ALO received from chat ' + repr(chat_id) + ' ...')
         print('Sending ALOOOOOOOOO to chat: ' + repr(chat_id) + ' ...')
+        match = re.findall(r'\ba+l[o|ô]+\b', command, flags=re.IGNORECASE)
         bot.sendMessage(chat_id, "Não diga " +
-                        command + ", diga: Essa fera aí",
+                        match[0] + ", diga: Essa fera aí",
                         reply_to_message_id=msg_id)
 
 
