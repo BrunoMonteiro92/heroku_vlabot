@@ -29,7 +29,7 @@ def handle(msg):
         response = ["Gua", "Beisso aí", "Risos", "Hausha7hausua7e", "Calma", "Te fode carlos", "Nossa", "Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua",
                     "Nao ma", "Bacana", "Essa fera", "Que loucura", "Te fode carlos", "O loco Bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora",
                     "Meu nome é Vladimir Lima tenho 24 anos, faço cerveja, ando de bicicleta e só", "Complicado esse humor", "boa", "Esse tempo todo?",
-                    "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado", "Bebam água", "Opa", "Ma", "Huum", "Huuum", "Pera", "Tô com sono"]
+                    "Vai fumar maconha ma\nQue tu fica de boas\nMenos exaltado", "Bebam água", "Opa", "Ma", "Huum", "Huuum", "Pera", "Tô com sono", "Bacana, bacana"]
         responseAsk = ["Calma, explica aí q eu não entendi", "Q?", "Depende", "Não sei, foda-se", "Que pergunta bosta, em? Vai se fuder", "Não, te fode",
                        "Provavelmente nao em...", "Olha, eu acho que sim em...", "Dificil isso...", "Olha, talvez", "Sim! AEAEAEAEA!", "Peraí que eu to comendo",
                        "Café?", "Que o q ma", "Não sei ma", "Hein?", "É"]
@@ -37,7 +37,7 @@ def handle(msg):
         if command == '/help' or command == '/help@vlademeeer_bot':
             print('Command ' + command +
                   ' received from chat ' + repr(chat_id) + ' ...')
-            bot.sendMessage(chat_id, "*Vlad Bot v5*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\
+            bot.sendMessage(chat_id, "*Vlad Bot v5.1*\n\nCara, a minha cabeça é difícil de entender. Da pra explicar não, foi mal. MAAAS, tem uns comandos bacanas aí oh...\
                             \n\n*/vlad* - faço um comentário extremamente enriquecedor para a conversa\
                             \n\n*/askvlad* - respostas honestas para qualquer pergunta\
                             \n\n*/fera* - minhas fotos sensuais que leva todo mundo a loucura\
@@ -185,6 +185,12 @@ def handle(msg):
         print('Command TOP received from chat ' + repr(chat_id) + ' ...')
         print('Sending TOPPER to chat: ' + repr(chat_id) + ' ...')
         bot.sendMessage(chat_id, "Não diga top, diga xibata",
+                        reply_to_message_id=msg_id)
+    elif re.search(r'\bal[o|ô]*\b', command, flags=re.IGNORECASE):
+        print('Command ALO received from chat ' + repr(chat_id) + ' ...')
+        print('Sending ALOOOOOOOOO to chat: ' + repr(chat_id) + ' ...')
+        bot.sendMessage(chat_id, "Não diga " +
+                        command + ", diga: Essa fera aí",
                         reply_to_message_id=msg_id)
 
 
