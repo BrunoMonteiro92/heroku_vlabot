@@ -68,7 +68,7 @@ def handle(msg):
 
             if op == "Te fode carlos":
                 name = msg['chat']['first_name']
-                op.replace("carlos", name.split()[0])
+                op = op.replace("carlos", name.split()[0])
 
             '''while op in filaVlad:
                 op = random.choice(response)
