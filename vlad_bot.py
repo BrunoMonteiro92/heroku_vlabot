@@ -14,12 +14,6 @@ filaDiz = deque(maxlen=5)
 TOKEN = os.environ['TELEGRAM_TOKEN']
 
 
-def _extract_message(update):
-    key = _find_first_key(update, ['update_id', 'message', 'edited_message', 'channel_post', 'edited_channel_post',
-                          'callback_query', 'inline_query', 'chosen_inline_result', 'shipping_query', 'pre_checkout_query'])
-    return key, update[key]
-
-
 def handle(msg):
     if 'text' not in msg:
         return
