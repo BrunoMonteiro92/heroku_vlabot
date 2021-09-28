@@ -66,6 +66,10 @@ def handle(msg):
                   ' received from chat ' + repr(chat_id) + ' ...')
             op = random.choice(response)
 
+            if op == "Te fode carlos":
+                name = msg['chat']['first_name']
+                op.replace("carlos", name.split()[0])
+
             '''while op in filaVlad:
                 op = random.choice(response)
             filaVlad.append(op)'''
