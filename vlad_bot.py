@@ -23,8 +23,8 @@ def handle(msg):
 
     if (command.startswith('/')):
 
-        pics = [f for f in os.listdir('/app/images/')]
-        audios = [f for f in os.listdir('/app/sound/')]
+        pics = [f for f in os.listdir('/images/')]
+        audios = [f for f in os.listdir('/sound/')]
 
         response = ["Gua", "Beisso aí", "Risos", "Hausha7hausua7e", "Calma", "Te fode carlos", "Nossa", "Você tá bem, cara?", "Uia", "Te fode carlos", ".", "Egua",
                     "Nao ma", "Bacana", "Essa fera", "Que loucura", "Te fode carlos", "O loco Bichow", "Tenso", "Diz", "Rs", "E foi indo e foi indo... E tamo aqui agora",
@@ -52,12 +52,12 @@ def handle(msg):
             calma = random.randint(0, 1)
             if calma == 0:
                 print('Sending calma to chat: ' + repr(chat_id) + ' ...')
-                with open('/app/calma.jpg', 'rb') as f:
+                with open('/calma.jpg', 'rb') as f:
                     bot.sendPhoto(chat_id, f)
                 f.close()
             elif calma == 1:
                 print('Sending calma2 to chat: ' + repr(chat_id) + ' ...')
-                with open('/app/calma2.jpg', 'rb') as f:
+                with open('/calma2.jpg', 'rb') as f:
                     bot.sendPhoto(chat_id, f)
                 f.close()
 
@@ -102,13 +102,13 @@ def handle(msg):
             if (img.endswith('.gif')):
                 print('Sending gif ***' + img +
                       '*** to chat: ' + repr(chat_id) + ' ...')
-                with open('/app/images/%s' % img, 'rb') as f:
+                with open('/images/%s' % img, 'rb') as f:
                     bot.sendDocument(chat_id, f)
                 f.close()
             else:
                 print('Sending pic ***' + img +
                       '*** to chat: ' + repr(chat_id) + ' ...')
-                with open('/app/images/%s' % img, 'rb') as f:
+                with open('/images/%s' % img, 'rb') as f:
                     bot.sendPhoto(chat_id, f)
                 f.close()
         elif '/fera' in command:
@@ -127,13 +127,13 @@ def handle(msg):
                     if (pics[p].endswith('.gif')):
                         print('Sending gif ***' + pics[p] +
                               '*** to chat: ' + repr(chat_id) + ' ...')
-                        with open('/app/images/%s' % pics[p], 'rb') as f:
+                        with open('/images/%s' % pics[p], 'rb') as f:
                             bot.sendDocument(chat_id, f)
                         f.close()
                     else:
                         print('Sending pic ***' + pics[p] +
                               '*** to chat: ' + repr(chat_id) + ' ...')
-                        with open('/app/images/%s' % pics[p], 'rb') as f:
+                        with open('/images/%s' % pics[p], 'rb') as f:
                             bot.sendPhoto(chat_id, f)
                         f.close()
         if command == '/mito' or command == '/mito@vlademeeer_bot':
@@ -164,7 +164,7 @@ def handle(msg):
 
             print('Sending audio ***' + aud +
                   '*** to chat: ' + repr(chat_id) + ' ...')
-            with open('/app/sound/%s' % aud, 'rb') as f:
+            with open('/sound/%s' % aud, 'rb') as f:
                 bot.sendVoice(chat_id, f)
             f.close()
         elif '/diz' in command:
@@ -182,7 +182,7 @@ def handle(msg):
                 else:
                     print('Sending audio ' +
                           audios[a] + ' to chat: ' + repr(chat_id) + ' ...')
-                    with open('/app/sound/%s' % audios[a], 'rb') as f:
+                    with open('/sound/%s' % audios[a], 'rb') as f:
                         bot.sendVoice(chat_id, f)
                     f.close()
     elif re.search(r'\btop[^ao]*\b', command, flags=re.IGNORECASE):
