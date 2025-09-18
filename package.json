@@ -1,0 +1,17 @@
+{
+  "name": "heroku_vlabot",
+  "type": "module",
+  "packageManager": "yarn@4.6.0",
+  "scripts": {
+    "dev": "tsx src/bot.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
