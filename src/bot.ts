@@ -86,13 +86,13 @@ const bot: Telegraf = new Telegraf(TOKEN);
 // /help
 bot.command("help", (context) => {
   context.replyWithMarkdownV2(
-    "*Vlad Bot v6.0*\n\n" +
-      "*/vlad* - comentário\n" +
-      "*/askvlad* - respostas\n" +
-      "*/fera* - fotos\n" +
-      "*/calma* - calma\n" +
-      "*/diz* - áudios\n\n" +
-      "*Desenvolvido por:* Yuri Reis / Bruno Monteiro"
+    "*Vlad Bot v6\\.0*\n\n" +
+      "*/vlad* \\- comentário\n" +
+      "*/askvlad* \\- respostas\n" +
+      "*/fera* \\- fotos\n" +
+      "*/calma* \\- calma\n" +
+      "*/diz* \\- áudios\n\n" +
+      "*Desenvolvido por:* Yuri Reis \\/ Bruno Monteiro"
   );
 });
 
