@@ -128,7 +128,7 @@ dist
 
 # yarn v3
 .pnp.*
-.yarn/*
+.yarn
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
@@ -139,3 +139,4 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+.vercel

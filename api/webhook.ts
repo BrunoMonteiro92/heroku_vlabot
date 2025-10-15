@@ -1,23 +1,25 @@
 import { Telegraf } from "telegraf";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import fs from "fs";
 import path from "path";
-import dotenv from "dotenv";
 import { logCommand, logSending, randomChoice } from "./utils.js";
 
-dotenv.config();
+// const imageQueue: string[] = [];
+// const soundQueue: string[] = [];
+// const MAX_IMAGE = 20;
+// const MAX_SOUND = 5;
 
-const imageQueue: string[] = [];
-const soundQueue: string[] = [];
-const MAX_IMAGE = 20;
-const MAX_SOUND = 5;
-
-const imagesDir = "./images";
-const soundsDir = "./sound";
+const imagesDir = "./public/images";
+const soundsDir = "./public/sound";
 
 const pics = fs.readdirSync(imagesDir);
 const audios = fs.readdirSync(soundsDir);
 
 const TOKEN = process.env.TELEGRAM_TOKEN!;
+const BASE_URL = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : process.env.BASE_URL || "http://localhost:3000";
+
 if (!TOKEN) {
   console.error("TELEGRAM_TOKEN is not set in environment variables!");
   process.exit(1);
@@ -125,11 +127,11 @@ bot.command("fera", async (context) => {
   logCommand(context.chat.id, "/fera");
 
   let img = randomChoice(pics);
-  while (imageQueue.includes(img)) {
-    img = randomChoice(pics);
-  }
-  imageQueue.push(img);
-  if (imageQueue.length > MAX_IMAGE) imageQueue.shift();
+  // while (imageQueue.includes(img)) {
+  //   img = randomChoice(pics);
+  // }
+  // imageQueue.push(img);
+  // if (imageQueue.length > MAX_IMAGE) imageQueue.shift();
 
   logSending(context.chat.id, img);
 
@@ -164,11 +166,11 @@ bot.command("diz", async (context) => {
   logCommand(context.chat.id, "/diz");
 
   let aud = randomChoice(audios);
-  while (soundQueue.includes(aud)) {
-    aud = randomChoice(audios);
-  }
-  soundQueue.push(aud);
-  if (soundQueue.length > MAX_SOUND) soundQueue.shift();
+  // while (soundQueue.includes(aud)) {
+  //   aud = randomChoice(audios);
+  // }
+  // soundQueue.push(aud);
+  // if (soundQueue.length > MAX_SOUND) soundQueue.shift();
 
   logSending(context.chat.id, aud);
 
@@ -197,8 +199,19 @@ bot.hears(/\ba+l[oô]+\b/iu, (context) => {
   });
 });
 
-bot.launch();
-console.log("Vlad bot is running...");
-
-process.once("SIGINT", () => bot.stop("SIGINT"));
-process.once("SIGTERM", () => bot.stop("SIGTERM"));
+export default async (req: VercelRequest, res: VercelResponse) => {
+  try {
+    if (req.method === "POST") {
+      await bot.handleUpdate(req.body);
+      res.status(200).json({ ok: true });
+    } else {
+      res.status(200).json({
+        status: "Vlad Bot is running",
+        base_url: BASE_URL,
+      });
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
