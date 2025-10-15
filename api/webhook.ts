@@ -3,17 +3,18 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import fs from "fs";
 import path from "path";
 import { logCommand, logSending, randomChoice } from "./utils.js";
+import { AudioFile, AUDIOS, ImageFile, IMAGES } from "./files.js";
 
 // const imageQueue: string[] = [];
 // const soundQueue: string[] = [];
 // const MAX_IMAGE = 20;
 // const MAX_SOUND = 5;
 
-const imagesDir = "./public/images";
-const soundsDir = "./public/sound";
+// const imagesDir = "./public/images";
+// const soundsDir = "./public/sound";
 
-const pics = fs.readdirSync(imagesDir);
-const audios = fs.readdirSync(soundsDir);
+const pics = IMAGES;
+const audios = AUDIOS;
 
 const TOKEN = process.env.TELEGRAM_TOKEN!;
 const BASE_URL = process.env.VERCEL_URL
@@ -102,9 +103,10 @@ bot.command("help", (context) => {
 bot.command("calma", async (context) => {
   logCommand(context.chat.id, "/calma");
 
-  const file = Math.random() < 0.5 ? "./calma.jpg" : "./calma2.jpg";
+  const file = Math.random() < 0.5 ? "calma.jpg" : "calma2.jpg";
+  const imageUrl = `${BASE_URL}/${file}`;
   logSending(context.chat.id, file);
-  await context.replyWithPhoto({ source: file });
+  await context.replyWithPhoto(imageUrl);
 });
 
 // /vlad
@@ -126,7 +128,8 @@ bot.command("vlad", (context) => {
 bot.command("fera", async (context) => {
   logCommand(context.chat.id, "/fera");
 
-  let img = randomChoice(pics);
+  const img = randomChoice(pics);
+  const imageUrl = `${BASE_URL}/images/${img}`;
   // while (imageQueue.includes(img)) {
   //   img = randomChoice(pics);
   // }
@@ -136,9 +139,9 @@ bot.command("fera", async (context) => {
   logSending(context.chat.id, img);
 
   if (img.endsWith(".gif")) {
-    await context.replyWithDocument({ source: path.join(imagesDir, img) });
+    await context.replyWithDocument(imageUrl);
   } else {
-    await context.replyWithPhoto({ source: path.join(imagesDir, img) });
+    await context.replyWithPhoto(imageUrl);
   }
 });
 
@@ -166,6 +169,7 @@ bot.command("diz", async (context) => {
   logCommand(context.chat.id, "/diz");
 
   let aud = randomChoice(audios);
+  const audioUrl = `${BASE_URL}/sound/${aud}`;
   // while (soundQueue.includes(aud)) {
   //   aud = randomChoice(audios);
   // }
@@ -174,7 +178,7 @@ bot.command("diz", async (context) => {
 
   logSending(context.chat.id, aud);
 
-  await context.replyWithVoice({ source: path.join(soundsDir, aud) });
+  await context.replyWithVoice(audioUrl);
 });
 
 // top
